@@ -1,0 +1,34 @@
+.map-menu {
+  position: absolute;
+  top: 10px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  left: 15px;
+  right: 15px;
+  margin: 0 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px #9e9e9e;
+}
+
+.map-menu > div {
+  display: flex;
+  align-items: center;
+}
+
+.map-menu > div:first-of-type {
+  flex: 1;
+}
+
+.map-menu input {
+  border: none;
+  width: 100%;
+  padding: 5px;
+}
+
+.map-menu a {
+  border-left: 1px solid #efefef;
+  padding: 10px;
+}
