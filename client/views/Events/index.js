@@ -1,14 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getEvents } from '../../api/events';
-import { Table } from 'reactstrap';
+import { Table, Button, ButtonGroup, ButtonToolbar, Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+import * as FontAwesome from 'react-icons/lib/fa'
+import Header from '../Common/Header'
+import Footer from '../Common/Footer'
+
+const linkStyle = {
+  color: 'white'
+}
+
+const buttonStyle = {
+  marginRight: 10
+}
 
 class Events extends Component {
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
+
+    this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
+      collapsed: true,
       events: [],
     };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
 
   componentWillMount() {
@@ -24,17 +55,17 @@ class Events extends Component {
     return this.state.events.map((event, i) => {
       return (
         <tr key={i}>
+          <td>{event.event_id}</td>
+          <td>{event.name}</td>
           <td>{event.deadline}</td>
           <td>{event.description}</td>
           <td>{event.end_date}</td>
           <td>{event.end_time}</td>
-          <td>{event.event_id}</td>
           <td>{event.expected_volume}</td>
-          <td>{event.name}</td>
+          <td>{event.location}</td>
           <td>{event.organizer_id}</td>
           <td>{event.start_date}</td>
           <td>{event.start_time}</td>
-          <td>{event.type}</td>
         </tr>
       )
     })
@@ -42,27 +73,31 @@ class Events extends Component {
 
   render() {
     return <div>
-      <Table>
+
+      <Header />
+
+      <Table striped responsive>
         <thead>
           <tr>
+            <th>event_id:</th>
+            <th>name:</th>
             <th>deadline</th>
             <th>description:</th>
             <th>end_date:</th>
             <th>end_time:</th>
-            <th>event_id:</th>
             <th>expected_volume:</th>
             <th>location:</th>
-            <th>name:</th>
             <th>organizer_id</th>
             <th>start_date</th>
             <th>start_time</th>
-            <th>type</th>
           </tr>
         </thead>
         <tbody>
           {this.renderTable()}
         </tbody>
       </Table>
+
+      <Footer />
     </div>
   }
 }
