@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Table, Button, ButtonGroup, ButtonToolbar, Collapse,
+import {
+  Table, Button, ButtonGroup, ButtonToolbar, Collapse,
   Container, Row, Col,
   Navbar,
   NavbarToggler,
@@ -10,25 +11,26 @@ import { Table, Button, ButtonGroup, ButtonToolbar, Collapse,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 import * as FontAwesome from 'react-icons/lib/fa'
 
 const linkStyle = {
-    color: 'white',
-    minWidth: 90
-}
-  
+  color: 'white',
+  minWidth: 90
+};
+
 const buttonStyle = {
-    marginRight: 0,
-    background: 'transparent'
-}
+  marginRight: 0,
+  background: 'transparent'
+};
 
 const rowStyle = {
-    flex:1,
-    flexDirection:'row',
-    justifyContent:'center',
-    textAlign:'center'
-}
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  textAlign: 'center'
+};
 
 class Footer extends Component {
 
@@ -49,16 +51,18 @@ class Footer extends Component {
 
   render() {
     return <div>
-        <Navbar color="dark" className="navbar fixed-bottom">
-            <Container>
-                <Row style={rowStyle}>
-                    <Col><NavLink style={linkStyle} href="/map/"><FontAwesome.FaMap /> Map</NavLink></Col>
-                    <Col><NavLink style={linkStyle} href="/events/"><FontAwesome.FaList /> List</NavLink></Col>
-                    <Col><NavLink style={linkStyle} href="/top/"><FontAwesome.FaHeart /> Top 10</NavLink></Col>
-                </Row>
-            </Container>
-            
-        </Navbar>
+      <Navbar color="dark" className="navbar fixed-bottom">
+        <Container>
+          <Row style={rowStyle}>
+            <Col><NavLink style={linkStyle} href="/map"><FontAwesome.FaMap /> Map</NavLink></Col>
+            <Col><NavLink style={linkStyle} href="/events"><FontAwesome.FaList /> List</NavLink></Col>
+            <Col><NavLink style={linkStyle} href="/profile"><FontAwesome.FaUser />
+              Profile
+            </NavLink></Col>
+          </Row>
+        </Container>
+
+      </Navbar>
     </div>
   }
 }
