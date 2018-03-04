@@ -54,10 +54,9 @@ class Footer extends Component {
                 <Row style={rowStyle}>
                     <Col><NavLink style={linkStyle} href="/map/"><FontAwesome.FaMap /> Map</NavLink></Col>
                     <Col><NavLink style={linkStyle} href="/events/"><FontAwesome.FaList /> List</NavLink></Col>
-                    <Col><NavLink style={linkStyle} href="/top/"><FontAwesome.FaHeart /> Favs</NavLink></Col>
+                    <Col><NavLink style={linkStyle} href="/top/"><FontAwesome.FaHeart /> Top 10</NavLink></Col>
                 </Row>
             </Container>
-            
             
         </Navbar>
     </div>

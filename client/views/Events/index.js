@@ -55,15 +55,9 @@ class Events extends Component {
     return this.state.events.map((event, i) => {
       return (
         <tr key={i}>
-          <td>{event.event_id}</td>
           <td>{event.name}</td>
-          <td>{event.deadline}</td>
           <td>{event.description}</td>
-          <td>{event.end_date}</td>
-          <td>{event.end_time}</td>
-          <td>{event.expected_volume}</td>
           <td>{event.location}</td>
-          <td>{event.organizer_id}</td>
           <td>{event.start_date}</td>
           <td>{event.start_time}</td>
         </tr>
@@ -79,17 +73,11 @@ class Events extends Component {
       <Table striped responsive>
         <thead>
           <tr>
-            <th>event_id:</th>
-            <th>name:</th>
-            <th>deadline</th>
-            <th>description:</th>
-            <th>end_date:</th>
-            <th>end_time:</th>
-            <th>expected_volume:</th>
-            <th>location:</th>
-            <th>organizer_id</th>
-            <th>start_date</th>
-            <th>start_time</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
