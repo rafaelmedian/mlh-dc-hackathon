@@ -27,3 +27,15 @@ export const getUser = id => api
   .catch(err => {
     console.log('Error fetching events', err);
   });
+
+export const registerToEvent = (eventId, userId) => api
+  .put(`/api/events/register/${eventId}`, { userId })
+  .catch(err => {
+    console.log('Error fetching events', err);
+  });
+
+export const unRegisterFromEvent = (eventId, userId) => api
+  .put(`/api/events/unregister/${eventId}`, { userId })
+  .catch(err => {
+    console.log('Error fetching events', err);
+  });

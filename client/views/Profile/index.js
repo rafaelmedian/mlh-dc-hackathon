@@ -6,7 +6,7 @@ import { faTimes, faCheckSquare } from '@fortawesome/fontawesome-free-solid';
 import { getEvent, getUser } from '../../api/events';
 import { ymdToDate } from "../../utils";
 
-const USER_ID = 3;
+const USER_ID = 7;
 
 const ProfileHeader = props => {
   const { hours, name } = props;
@@ -86,6 +86,7 @@ class Profile extends Component {
       .then(registeredEvents => {
         const events = registeredEvents.map(
           registeredEvent => getEvent(registeredEvent).then(x => x.data.events[0]));
+
         Promise
           .all(events)
           .then(result => this.setState({ events: result }));

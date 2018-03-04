@@ -19,6 +19,8 @@ const userRoutes = app => {
 const eventRoutes = app => {
   app.get('/api/events/:id', EventController.getEvent);
   app.get('/api/events', EventController.index);
+  app.put('/api/events/register/:id', EventController.register);
+  app.put('/api/events/unregister/:id', EventController.unRegister);
   app.get('/api/user_info/:id', EventController.getUser);
   app.get('/api/user_info', EventController.getUsers);
 };

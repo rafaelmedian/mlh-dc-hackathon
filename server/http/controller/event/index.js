@@ -52,9 +52,41 @@ const getUsers = (req, res) => {
     .catch(err => console.log(err))
 };
 
+/**
+ * Register a user to an event
+ * @param req
+ * @param res
+ */
+const register = (req, res) => {
+  const eventId = req.params.id;
+  const { userId } = req.body;
+  fetch(`${API_URL}/event_info/register?event_id=${eventId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ user_id: userId }),
+  })
+    .then(data => res.send('Ok'))
+    .catch(err => console.log(err))
+};
+
+/**
+ * Unregister an user from an event
+ */
+const unRegister = (req, res) => {
+  const eventId = req.params.id;
+  const { userId } = req.body;
+  fetch(`${API_URL}/event_info/unregister?event_id=${eventId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ user_id: userId }),
+  })
+    .then(data => res.send('Ok'))
+    .catch(err => console.log(err))
+};
+
 module.exports = {
   index,
   getUser,
   getUsers,
   getEvent,
+  register,
+  unRegister,
 };
