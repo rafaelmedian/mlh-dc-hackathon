@@ -94,6 +94,16 @@ class Map extends Component {
     });
   };
 
+  swipeLeft = () => {
+    const nextEvent = this.state.selectedEvent - 1;
+    this.setState({ selectedEvent: nextEvent });
+  };
+
+  swipeRight = () => {
+    const nextEvent = this.state.selectedEvent + 1;
+    this.setState({ selectedEvent: nextEvent });
+  };
+
   render() {
     return (
       <div style={{ position: 'relative' }}>
@@ -107,6 +117,8 @@ class Map extends Component {
           mapElement={<div style={{ height: `100%` }} />}
         />
         <MapDrawer
+          swipeLeft={this.swipeLeft}
+          swipeRight={this.swipeRight}
           event={this.getSelectedEvent()}
           close={this.closeDrawer}
         />

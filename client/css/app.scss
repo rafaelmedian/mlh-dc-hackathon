@@ -1,6 +1,8 @@
 $color-1: #747e8d;
 $color-2: #ff3a50;
 $color-3: #3b86ff;
+$color-4: #ffd428;
+$color-5: #29cc10;
 
 .color-1 {
   color: $color-1;
@@ -10,8 +12,16 @@ $color-3: #3b86ff;
   color: $color-2;
 }
 
-.color-2 {
+.color-3 {
   color: $color-3;
+}
+
+.color-4 {
+  color: $color-4;
+}
+
+.color-5 {
+  color: $color-5;
 }
 
 @mixin withoutOutline() {
@@ -83,10 +93,6 @@ $color-3: #3b86ff;
   cursor: pointer;
 }
 
-.map-drawer.is-open {
-  height: 100vh;
-}
-
 .map-drawer p {
   margin-bottom: 0;
 }
@@ -105,14 +111,16 @@ $color-3: #3b86ff;
   color: $color-1;
 }
 
-.map-drawer-time {
+.map-drawer-time,
+.event-information-time {
   font-size: 13px;
   line-height: 15px;
   font-weight: bold;
   color: $color-1;
 }
 
-.map-drawer-description {
+.map-drawer-description,
+.event-information-description {
   font-size: 14px;
   line-height: 18px;
   color: $color-1;
@@ -139,4 +147,71 @@ $color-3: #3b86ff;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
+}
+
+.map-footer {
+  display: flex;
+}
+
+.map-footer {
+  button {
+    flex: 1;
+    padding: 5px;
+  }
+}
+
+// event
+.event-information {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  min-height: 30vh;
+  z-index: 2;
+  overflow: hidden;
+  padding: 20px;
+  overflow-y: auto;
+  top: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+.event-information-header {
+
+}
+
+.event-information-body {
+  flex: 1;
+  margin-top: 20px;
+}
+
+.event-information-footer {
+
+}
+
+.btn-volunteer {
+  background: #2f80ed;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px;
+}
+
+.event-information-location-box {
+  color: #000;
+  display: flex;
+}
+
+//buttons
+.map-footer-btn {
+  background-color: $color-3;
+  color: #fff;
+  margin: 5px;
+}
+
+.map-footer-btn + .map-footer-btn {
+  background-color: $color-5;
 }
