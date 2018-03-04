@@ -6,7 +6,7 @@ import { ymdToDate } from "../../utils";
 import MapHOC from '../MapHOC';
 import { image } from 'faker';
 import Footer from '../Common/Footer';
-
+import { Link } from 'react-router-dom';
 const USER_ID = 7;
 
 const NumberBox = props => {
@@ -133,10 +133,12 @@ class Profile extends Component {
         <NextEvent>
           {this.state.events.map((event, index) => {
             return (
-              <ProfileEvent
-                event={event}
-                index={index}
-              />
+              <Link to="/Cert">
+                <ProfileEvent
+                  event={event}
+                  index={index}
+                />
+              </Link>
             );
           })}
         </NextEvent>
