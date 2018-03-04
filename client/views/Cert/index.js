@@ -26,6 +26,12 @@ const CertPage = sizeMe({
       }}>
         <img src={cert} className="img-fluid" />
         <Confetti {...this.props.size} />
+        <div className="cert-box">
+          <label>Certificate URL:</label>
+          <p className="cert-link">
+            http://volonto/cert/234234.com
+          </p>
+        </div>
       </div>
     )
   }

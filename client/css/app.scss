@@ -218,6 +218,7 @@ $color-5: #29cc10;
   border-radius: 8px;
   width: 100%;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .event-information-location-box {
@@ -231,6 +232,13 @@ $color-5: #29cc10;
   background-color: $color-3;
   color: #fff;
   margin: 5px;
+}
+
+.cert-link {
+}
+
+.cert-box {
+  padding: 20px;
 }
 
 .map-footer-btn + .map-footer-btn {
@@ -255,6 +263,7 @@ $color-5: #29cc10;
 .user-profile-container {
   display: flex;
 }
+
 //
 // .user-profile > div {
 //   flex: 1;
@@ -378,13 +387,12 @@ $color-5: #29cc10;
   margin-top: 10px;
 }
 
-
 .heading {
   font-weight: 800;
   line-height: 22px;
   font-size: 17px;
   margin-bottom: 0;
-  color: #171A21;
+  color: #171a21;
 }
 
 .sub-heading {
@@ -392,7 +400,7 @@ $color-5: #29cc10;
   line-height: 21px;
   font-size: 16px;
 
-  color: #747E8D;
+  color: #747e8d;
 }
 
 .copy-1 {
@@ -400,7 +408,7 @@ $color-5: #29cc10;
   line-height: 18px;
   font-size: 14px;
 
-  color: #747E8D;
+  color: #747e8d;
 }
 
 .copy-2 {
@@ -409,7 +417,7 @@ $color-5: #29cc10;
   line-height: 16px;
   font-size: 13px;
   // margin-bottom: 0;
-  color: #747E8D;
+  color: #747e8d;
 }
 
 .copy-3 {
@@ -417,5 +425,5 @@ $color-5: #29cc10;
   font-size: 13px;
   margin-bottom: 0;
 
-  color: #747E8D;
+  color: #747e8d;
 }
