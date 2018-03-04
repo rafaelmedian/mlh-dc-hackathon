@@ -1,3 +1,38 @@
 h1, h2, h3, h4, h5, h6, p, span, select, input, blockquote {
   color: rgba(0, 0, 0, .84);
 }
+
+.heading {
+  font-family: San Francisco Text;
+  font-weight: 800;
+  line-height: 22px;
+  font-size: 17px;
+
+  color: #171A21;
+}
+
+.sub-heading {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 21px;
+  font-size: 16px;
+
+  color: #747E8D;
+}
+
+.copy-1 {
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 14px;
+
+  color: #747E8D;
+}
+
+.copy-2 {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 16px;
+  font-size: 13px;
+
+  color: #747E8D;
+}

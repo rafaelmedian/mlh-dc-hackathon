@@ -49,18 +49,19 @@ const EventInformation = props => {
             {event.location}
           </IconBox>
           <IconBox icon={faStar}>
-            It's flexible we will work with your schedule
+            Its flexible we will work with your schedule
           </IconBox>
         </div>
         <div>
-          <p className="event-information-title">
-            {event.name}
+          <p className="event-information-title subheading">
+            Church of Virginia
           </p>
 
-          <p className="event-information-time">
+          <p className="event-information-time copy-3">
             {ymdToDate(event)}
           </p>
-          <p className="event-information-description">{event.description}</p>
+          <p className="event-information-description heading">{event.name}</p>
+          <p className="event-information-description copy-2">{event.description}</p>
         </div>
 
         <div className="star-box">
@@ -81,7 +82,7 @@ const EventInformation = props => {
           return <UserProfile
             key={index}
             avatar={internet.avatar()}
-            name={name.firstName()}
+            // name={name.firstName()}
           />
         })}
       </div>

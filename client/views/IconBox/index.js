@@ -9,7 +9,7 @@ const IconBox = props => {
         <FontAwesomeIcon className="color-1" icon={icon} />
       </div>
       <div>
-        <span>{props.children}</span>
+        <span className="copy-3">{props.children}</span>
       </div>
     </div>
   );
