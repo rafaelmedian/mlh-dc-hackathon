@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getEvents } from '../../api/events';
+import { getEvent, getEvents, getUser } from '../../api/events';
 import {
   Marker,
   GoogleMap,
@@ -12,13 +12,14 @@ import MapDrawer from '../MapDrawer';
 
 const DEFAULT_ZOOM = 12;
 const DEFAULT_CENTER = { lat: 38.8879295, lng: -77.1100426 };
+const USER_ID = 7;
 
 const EventMarkers = (props) => {
   const { events, onMarkerClick } = props;
 
   return events.map((event, i) => {
     if (!event || !event.coordinate) return null;
-    
+
     const [lat, lng] = event.coordinate;
 
     return (
@@ -61,6 +62,7 @@ class Map extends Component {
     super();
     this.state = {
       events: [],
+      user: {},
       selectedEvent: 0,
     };
   }
@@ -72,6 +74,23 @@ class Map extends Component {
         if (events) this.setState({ events });
       })
       .catch(err => console.log(err));
+
+    // Gets the user with the user events
+    getUser(USER_ID)
+    // get the user
+      .then(({ data }) => {
+        this.setState({ user: data });
+        return data.registered_events;
+      })
+      // the the user events
+      .then(registeredEvents => {
+        const events = registeredEvents.map(
+          registeredEvent => getEvent(registeredEvent).then(x => x.data.events[0]));
+        Promise
+          .all(events)
+          .then(result => this.setState({ user: { events: result } }));
+      })
+      .catch(err => console.log('Error', err));
   }
 
   getSelectedEvent = () => {
@@ -110,6 +129,7 @@ class Map extends Component {
         />
         <MapDrawer
           event={this.getSelectedEvent()}
+          user={this.state.user}
           close={this.closeDrawer}
         />
       </div>

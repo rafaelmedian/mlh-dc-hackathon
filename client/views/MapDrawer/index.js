@@ -18,7 +18,7 @@ class MapDrawer extends Component {
   };
 
   render() {
-    const { event, close } = this.props;
+    const { event, close, user } = this.props;
     if (!event) return null;
 
     if (this.state.isOpen) {
@@ -33,6 +33,7 @@ class MapDrawer extends Component {
     return (
       <InfoBox
         event={event}
+        user={user}
         className={'map-drawer'}
         close={close}
         toggle={this.toggle}
