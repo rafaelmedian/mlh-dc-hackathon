@@ -1,0 +1,24 @@
+.profile-map {
+  border-radius: 20px;
+  border: 1px solid #bac4d4;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.big-number {
+  font-weight: bold;
+}
+
+.number-wrapper {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+}

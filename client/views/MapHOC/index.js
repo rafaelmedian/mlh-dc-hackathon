@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getEvent, getEvents, getUser } from '../../api/events';
+import { getEvent, getUser } from '../../api/events';
 import {
   Marker,
   GoogleMap,
   withGoogleMap,
   withScriptjs
 } from 'react-google-maps';
-import MapMenu from '../MapMenu';
-import MapDrawer from '../MapDrawer';
 
 const DEFAULT_ZOOM = 12;
 const DEFAULT_CENTER = { lat: 38.8879295, lng: -77.1100426 };
@@ -61,20 +59,11 @@ class Map extends Component {
   constructor() {
     super();
     this.state = {
-      events: [],
       user: {},
-      selectedEvent: 0,
     };
   }
 
   componentWillMount() {
-    getEvents()
-      .then(({ data }) => {
-        const events = data.events;
-        if (events) this.setState({ events });
-      })
-      .catch(err => console.log(err));
-
     // Gets the user with the user events
     getUser(USER_ID)
     // get the user
@@ -94,44 +83,20 @@ class Map extends Component {
       .catch(err => console.log('Error', err));
   }
 
-  getSelectedEvent = () => {
-    const { selectedEvent, events } = this.state;
-
-    if (!events) return null;
-    const event = events[selectedEvent];
-    if (!event) return null;
-
-    return event;
-  };
-
-  onMarkerClick = id => {
-    this.setState({
-      selectedEvent: id
-    });
-  };
-
-  closeDrawer = () => {
-    this.setState({
-      selectedEvent: null,
-    });
-  };
-
   render() {
+    const events = this.state.user && this.state.user.events || [];
     return (
-      <div style={{ position: 'relative' }}>
-        <MapMenu className="map-menu-navigation" />
+      <div
+        className="profile-map"
+        style={{ position: 'relative' }}
+      >
         <MapHOC
-          onMarkerClick={this.onMarkerClick}
-          events={this.state.events}
+          onMarkerClick={() => {}}
+          events={events}
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100vh` }} />}
+          containerElement={<div style={{ height: `30vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-        />
-        <MapDrawer
-          event={this.getSelectedEvent()}
-          user={this.state.user}
-          close={this.closeDrawer}
         />
       </div>
     );

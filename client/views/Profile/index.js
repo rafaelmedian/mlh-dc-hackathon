@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { internet } from 'faker';
 import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faTimes, faCheckSquare } from '@fortawesome/fontawesome-free-solid';
 import { getEvent, getUser } from '../../api/events';
 import { ymdToDate } from "../../utils";
+import MapHOC from '../MapHOC';
+import { image } from 'faker';
 
 const USER_ID = 7;
+
+const NumberBox = props => {
+  return (
+    <div>
+      <span className="big-number">{props.number}</span>
+      {props.children}
+    </div>
+  );
+};
 
 const ProfileHeader = props => {
   const { hours, name } = props;
@@ -45,15 +54,23 @@ const ProfileEvent = props => {
   const { event } = props;
   return (
     <div className="profile-event">
-      <p className="profile-event-time">
-        {ymdToDate(event)}
-      </p>
-      <p className="profile-event-description">
-        {event.description}
-      </p>
-      <div className="profile-event-icon-box">
-        <FontAwesomeIcon className="color-5" icon={faCheckSquare} />
-        <FontAwesomeIcon className="color-2" icon={faTimes} />
+      <div>
+        <p className="profile-event-time">
+          {ymdToDate(event)}
+        </p>
+        <p className="profile-event-title">
+          {event.name}
+        </p>
+        <p className="">
+          {event.location}
+        </p>
+      </div>
+      <div>
+        <img
+          className="img-fluid"
+          src={image.imageUrl()}
+        />
+        <span>4 hrs</span>
       </div>
     </div>
   );
@@ -62,7 +79,6 @@ const ProfileEvent = props => {
 const NextEvent = (props) => {
   return (
     <div className="next-event">
-      <p className="next-event-text">Your Next Events</p>
       {props.children}
     </div>
   );
@@ -101,6 +117,18 @@ class Profile extends Component {
           name={this.state.first_name + ' ' + this.state.last_name}
           hours={this.state.hours}
         />
+        <MapHOC />
+        <div className="number-wrapper">
+          <NumberBox number={this.state.events.length || 0}>
+            Events
+          </NumberBox>
+          <NumberBox number={this.state.hours}>
+            Hours
+          </NumberBox>
+          <NumberBox number={10}>
+            Causes
+          </NumberBox>
+        </div>
         <NextEvent>
           {this.state.events.map((event, index) => {
             return (
