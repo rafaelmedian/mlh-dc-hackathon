@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { image } from 'faker';
 import {
   Carousel,
   CarouselItem,
@@ -6,18 +7,6 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
-
-const items = [
-  {
-    src: 'https://picsum.photos/450/300',
-  },
-  {
-    src: 'https://picsum.photos/450/300',
-  },
-  {
-    src: 'https://picsum.photos/450/300',
-  }
-];
 
 class Example extends Component {
   constructor(props) {
@@ -58,6 +47,11 @@ class Example extends Component {
   render() {
     const { activeIndex } = this.state;
 
+    // create 5 images using faker API
+    const items = Array(5)
+      .fill('')
+      .map(item => ({ src: image[this.props.type]() }));
+
     const slides = items.map((item, index) => {
       return (
         <CarouselItem
@@ -65,7 +59,7 @@ class Example extends Component {
           onExited={this.onExited}
           key={index}
         >
-          <img src={item.src} alt={item.altText} />
+          <img className="carousel-img" src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );

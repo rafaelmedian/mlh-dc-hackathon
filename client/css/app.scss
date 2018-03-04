@@ -91,6 +91,8 @@ $color-5: #29cc10;
   color: $color-1;
   font-weight: 100;
   cursor: pointer;
+  position: absolute;
+  right: 20px;
 }
 
 .map-drawer p {
@@ -103,12 +105,19 @@ $color-5: #29cc10;
   border-bottom: 1px solid #747e8d;
 }
 
-.map-drawer-title {
+.map-drawer-title,
+.event-information-title {
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 16px;
   line-height: 21px;
   color: $color-1;
+}
+
+.event-information-title {
+  border-bottom: 1px solid #eee;
+  margin-top: 10px;
+  padding-bottom: 20px;
 }
 
 .map-drawer-time,
@@ -124,6 +133,10 @@ $color-5: #29cc10;
   font-size: 14px;
   line-height: 18px;
   color: $color-1;
+}
+
+.map-drawer-description {
+  margin-top: 10px;
 }
 
 .map-header-body {
@@ -180,12 +193,16 @@ $color-5: #29cc10;
 }
 
 .event-information-header {
-
+  margin: 0 auto;
 }
 
 .event-information-body {
   flex: 1;
   margin-top: 20px;
+}
+
+.event-participants {
+
 }
 
 .event-information-footer {
@@ -203,6 +220,7 @@ $color-5: #29cc10;
 .event-information-location-box {
   color: #000;
   display: flex;
+  justify-content: space-between;
 }
 
 //buttons
@@ -214,4 +232,102 @@ $color-5: #29cc10;
 
 .map-footer-btn + .map-footer-btn {
   background-color: $color-5;
+}
+
+// icon-box
+.icon-box {
+  display: flex;
+}
+
+.icon-box > div {
+  padding: 3px;
+}
+
+// carousel
+.carousel-img {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.user-profile {
+  display: flex;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  margin: 5px 0;
+}
+
+.user-profile > div {
+  flex: 1;
+}
+
+.user-profile > div:first-of-type {
+  width: 150px;
+}
+
+.star-box {
+  margin-bottom: 10px;
+}
+
+// profile
+
+.profile-name {
+  line-height: 28px;
+  font-size: 20px;
+  color: #171a21;
+  border-radius: 25%;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.profile-hours {
+  line-height: 18px;
+  font-size: 14px;
+  color: #747e8d;
+  margin-bottom: 0;
+}
+
+.profile-header {
+  display: flex;
+  margin-bottom: 20px;
+  > div {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.profile-avatar img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+}
+
+.profile {
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.profile-event {
+  border-radius: 5px;
+  border: 1px solid #efefef;
+  padding: 20px;
+}
+
+.profile-event-icon-box {
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.profile-event-icon-box svg {
+  margin-left: 15px;
+  font-size: 25px;
+}
+
+.next-event-text {
+  font-weight: bold;
+  line-height: 21px;
+  font-size: 16px;
+  color: #747e8d;
 }
