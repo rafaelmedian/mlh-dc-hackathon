@@ -8,6 +8,7 @@ import {
   withScriptjs
 } from 'react-google-maps';
 import MapMenu from '../MapMenu';
+import MapDrawer from '../MapDrawer';
 
 const DEFAULT_ZOOM = 12;
 const DEFAULT_CENTER = { lat: 38.8879295, lng: -77.1100426 };
@@ -21,7 +22,7 @@ const EventMarkers = (props) => {
     return (
       <Marker
         key={i}
-        onClick={onMarkerClick}
+        onClick={() => onMarkerClick(i)}
         position={{ lat, lng }}
       />
     );
@@ -58,6 +59,7 @@ class Map extends Component {
     super();
     this.state = {
       events: [],
+      selectedEvent: null,
     };
   }
 
@@ -70,8 +72,26 @@ class Map extends Component {
       .catch(err => console.log(err));
   }
 
-  onMarkerClick = () => {
-    console.log('marker clicked');
+  getSelectedEvent = () => {
+    const { selectedEvent, events } = this.state;
+
+    if (!events) return null;
+    const event = events[selectedEvent];
+    if (!event) return null;
+
+    return event;
+  };
+
+  onMarkerClick = id => {
+    this.setState({
+      selectedEvent: id
+    });
+  };
+
+  closeDrawer = () => {
+    this.setState({
+      selectedEvent: null,
+    });
   };
 
   render() {
@@ -85,6 +105,10 @@ class Map extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+        />
+        <MapDrawer
+          event={this.getSelectedEvent()}
+          close={this.closeDrawer}
         />
       </div>
     );

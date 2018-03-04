@@ -42,3 +42,28 @@
   border-left: 1px solid #efefef;
   padding: 10px;
 }
+
+// MapDrawer
+.map-drawer {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  min-height: 50px;
+}
+
+.map-drawer > div {
+  padding: 5px;
+}
+
+.map-drawer > div:nth-of-type(2) {
+  flex: 1;
+}
+
+.map-drawer-close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
