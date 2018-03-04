@@ -8,7 +8,7 @@ export const queryfy = (data = {}) => {
 };
 
 export const api = axios.create({
-  timeout: 5000,
+  timeout: 50000,
   headers: {
     'Authorization': getToken(),
   }

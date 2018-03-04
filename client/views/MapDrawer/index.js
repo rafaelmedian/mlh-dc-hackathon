@@ -1,34 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InfoBox from '../InfoBox';
+import EventInformation from '../EventInformation';
 
-const MapDrawer = props => {
-  const { event, close } = props;
-  if (!event) return null;
+class MapDrawer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+  }
 
-  return (
-    <div className="map-drawer">
+  toggle = (bool) => {
+    typeof bool === 'boolean'
+      ? this.setState({ isOpen: bool })
+      : this.setState({ isOpen: !this.state.isOpen, })
+  };
 
-      <span
-        className="map-drawer-close-btn"
-        onClick={close}
-      >
-        X
-      </span>
+  render() {
+    const { event, close } = this.props;
+    if (!event) return null;
 
-      <div>
-        <img
-          className="img-fluid"
-          src="http://placehold.it/150/150"
-          alt=""
-        />
-      </div>
-      <div>
-        <p>{event.name}</p>
-        <p>{event.description}</p>
-      </div>
-    </div>
-  );
-};
+    if (this.state.isOpen) {
+      return <EventInformation
+        event={event}
+        className="map-drawer is-open"
+        close={close}
+        toggle={this.toggle}
+      />
+    }
+
+    return (
+      <InfoBox
+        event={event}
+        className={'map-drawer'}
+        close={close}
+        toggle={this.toggle}
+      />
+    );
+  }
+}
 
 MapDrawer.propTypes = {
   children: PropTypes.node,

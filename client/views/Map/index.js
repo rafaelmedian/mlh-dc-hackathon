@@ -17,6 +17,8 @@ const EventMarkers = (props) => {
   const { events, onMarkerClick } = props;
 
   return events.map((event, i) => {
+    if (!event || !event.coordinate) return null;
+    
     const [lat, lng] = event.coordinate;
 
     return (
@@ -59,7 +61,7 @@ class Map extends Component {
     super();
     this.state = {
       events: [],
-      selectedEvent: null,
+      selectedEvent: 0,
     };
   }
 
@@ -96,7 +98,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <MapMenu className="map-menu-navigation" />
         <MapHOC
           onMarkerClick={this.onMarkerClick}

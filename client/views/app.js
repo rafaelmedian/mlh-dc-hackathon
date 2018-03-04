@@ -20,6 +20,7 @@ import UnauthRoute from '../components/Auth/UnauthRoute';
 import Events from '../views/Events';
 import Map from '../views/Map';
 import Home from './Home';
+import Profile from './Profile';
 
 class App extends Component {
   render() {
@@ -34,11 +35,12 @@ class App extends Component {
           <AuthRoute path="/events" component={Events} exact />
           <AuthRoute path="/map" component={Map} exact />
           <AuthRoute path="/logout" component={Logout} exact />
+          <AuthRoute path="/profile" component={Profile} exact />
           <UnauthRoute path="/login" component={Login} exact />
           <UnauthRoute path="/register" component={Register} exact />
           <UnauthRoute path="/forget-password" component={ForgetPassword} exact />
           <UnauthRoute path="/reset-password/:token" component={ResetPassword} exact />
-          <Route path="/" component={Home} />
+          <Route path="/" component={Map} />
           {/* 404 */}
           <NotFound to="/" />
         </Switch>
