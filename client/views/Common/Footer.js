@@ -23,6 +23,13 @@ const buttonStyle = {
     background: 'transparent'
 }
 
+const rowStyle = {
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'center',
+    textAlign:'center'
+}
+
 class Footer extends Component {
 
   constructor(props) {
@@ -44,7 +51,7 @@ class Footer extends Component {
     return <div>
         <Navbar color="dark" className="navbar fixed-bottom">
             <Container>
-                <Row>
+                <Row style={rowStyle}>
                     <Col><NavLink style={linkStyle} href="/map/"><FontAwesome.FaMap /> Map</NavLink></Col>
                     <Col><NavLink style={linkStyle} href="/events/"><FontAwesome.FaList /> List</NavLink></Col>
                     <Col><NavLink style={linkStyle} href="/top/"><FontAwesome.FaHeart /> Favs</NavLink></Col>
