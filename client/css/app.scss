@@ -1,3 +1,5 @@
+$color-1: #747e8d;
+
 @mixin withoutOutline() {
   &:focus {
     outline: 0;
@@ -46,24 +48,81 @@
 // MapDrawer
 .map-drawer {
   display: flex;
+  flex-direction: column;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 20px;
   background: #fff;
-  min-height: 50px;
-}
-
-.map-drawer > div {
-  padding: 5px;
-}
-
-.map-drawer > div:nth-of-type(2) {
-  flex: 1;
+  min-height: 30vh;
+  z-index: 2;
+  border: 1px solid #bac4d4;
+  margin: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
 }
 
 .map-drawer-close-btn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  color: $color-1;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.map-drawer.is-open {
+  height: 100vh;
+}
+
+.map-drawer p {
+  margin-bottom: 0;
+}
+
+.map-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #747e8d;
+}
+
+.map-drawer-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 21px;
+  color: $color-1;
+}
+
+.map-drawer-time {
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: bold;
+  color: $color-1;
+}
+
+.map-drawer-description {
+  font-size: 14px;
+  line-height: 18px;
+  color: $color-1;
+}
+
+.map-header-body {
+  margin-top: 10px;
+  display: flex;
+}
+
+.map-header-body > div {
+  padding: 5px;
+}
+
+.map-header-body > div:first-of-type {
+  flex: 1;
+}
+
+.map-header-body > div:nth-of-type(2) {
+  width: 150px;
+}
+
+.map-header-icons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
 }
