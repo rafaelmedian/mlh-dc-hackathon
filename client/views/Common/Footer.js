@@ -54,10 +54,11 @@ class Footer extends Component {
       <Navbar color="dark" className="navbar fixed-bottom">
         <Container>
           <Row style={rowStyle}>
-            <Col><NavLink style={linkStyle} href="/map/"><FontAwesome.FaMap /> Map</NavLink></Col>
-            <Col><NavLink style={linkStyle} href="/events/"><FontAwesome.FaList /> List</NavLink></Col>
-            <Col><NavLink style={linkStyle} href="/top/"><FontAwesome.FaHeart /> Top
-              10</NavLink></Col>
+            <Col><NavLink style={linkStyle} href="/map"><FontAwesome.FaMap /> Map</NavLink></Col>
+            <Col><NavLink style={linkStyle} href="/events"><FontAwesome.FaList /> List</NavLink></Col>
+            <Col><NavLink style={linkStyle} href="/profile"><FontAwesome.FaUser />
+              Profile
+            </NavLink></Col>
           </Row>
         </Container>
 

@@ -79,7 +79,7 @@ $color-5: #29cc10;
   bottom: 20px;
   background: #fff;
   min-height: 30vh;
-  z-index: 2;
+  z-index: 2000;
   border: 1px solid #bac4d4;
   margin: 20px;
   border-radius: 20px;
@@ -304,6 +304,7 @@ $color-5: #29cc10;
 }
 
 .profile {
+  position: relative;
   padding: 20px;
   margin-bottom: 10px;
 }

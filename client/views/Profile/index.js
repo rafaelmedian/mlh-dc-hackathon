@@ -5,6 +5,7 @@ import { getEvent, getUser } from '../../api/events';
 import { ymdToDate } from "../../utils";
 import MapHOC from '../MapHOC';
 import { image } from 'faker';
+import Footer from '../Common/Footer';
 
 const USER_ID = 7;
 
@@ -140,6 +141,7 @@ class Profile extends Component {
           })}
         </NextEvent>
         <EventInfo />
+        <Footer />
       </div>
     );
   }

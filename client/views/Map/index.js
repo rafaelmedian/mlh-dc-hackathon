@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getEvent, getEvents, getUser } from '../../api/events';
+import Footer from '../Common/Footer';
 import {
   Marker,
   GoogleMap,
@@ -133,6 +134,7 @@ class Map extends Component {
           user={this.state.user}
           close={this.closeDrawer}
         />
+        <Footer />
       </div>
     );
   }
