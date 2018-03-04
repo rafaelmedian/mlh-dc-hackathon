@@ -4,7 +4,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faClock, faStar } from '@fortawesome/fontawesome-free-solid';
 import { ymdToDate } from '../../utils';
 import IconBox from '../IconBox';
-import { internet, name } from 'faker';
+import { image, internet, name } from 'faker';
 
 const UserProfile = props => {
   return (
@@ -38,7 +38,10 @@ const EventInformation = props => {
         >
           X
         </span>
-        <Carousel type={event.type} />
+        <Carousel
+          type={event.type}
+          items={Array(5).fill('').map(item => ({ src: image[event.type]() }))}
+        />
       </div>
       <div className="event-information-body">
         <div className="event-information-location-box">

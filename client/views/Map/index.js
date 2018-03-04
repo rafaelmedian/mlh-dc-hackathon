@@ -17,6 +17,8 @@ const EventMarkers = (props) => {
   const { events, onMarkerClick } = props;
 
   return events.map((event, i) => {
+    if (!event || !event.coordinate) return null;
+    
     const [lat, lng] = event.coordinate;
 
     return (

@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { internet } from 'faker';
+import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faTimes, faCheckSquare } from '@fortawesome/fontawesome-free-solid';
+import { getEvent, getUser } from '../../api/events';
+import { ymdToDate } from "../../utils";
+
+const USER_ID = 3;
 
 const ProfileHeader = props => {
   const { hours, name } = props;
@@ -24,14 +28,28 @@ const ProfileHeader = props => {
   );
 };
 
+const EventInfo = () => {
+  return (
+    <div className="profile-event-info">
+      <p className="profile-event-title">Church of Virginia</p>
+      <p className="profile-event-time">16th March, 7 PM - 12:00 PM</p>
+      <p className="profile-event-description">We're looking for two to three-man crews to
+        pick up local donations and deliver furniture and appliances to our thrift-store
+        customers. All of the proceeds from our sales go directly to our client program
+        that helps people in need.</p>
+    </div>
+  );
+};
+
 const ProfileEvent = props => {
+  const { event } = props;
   return (
     <div className="profile-event">
       <p className="profile-event-time">
-        May 20 2018
+        {ymdToDate(event)}
       </p>
       <p className="profile-event-description">
-        830 N. Apollo Blvd. Melbourne, FL32935
+        {event.description}
       </p>
       <div className="profile-event-icon-box">
         <FontAwesomeIcon className="color-5" icon={faCheckSquare} />
@@ -42,27 +60,61 @@ const ProfileEvent = props => {
 };
 
 const NextEvent = (props) => {
-  const { event } = props;
-
   return (
     <div className="next-event">
       <p className="next-event-text">Your Next Events</p>
-      <ProfileEvent />
+      {props.children}
     </div>
   );
 };
 
-const Profile = props => {
-  return (
-    <div className="profile">
-      <ProfileHeader
-        name="Luis Betancourt"
-        hours={40}
-      />
-      <NextEvent />
-    </div>
-  );
-};
+class Profile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      events: [],
+    };
+  }
+
+  componentWillMount() {
+    // Gets the user with the user events
+    getUser(USER_ID)
+      .then(({ data }) => {
+        this.setState(data);
+        return data.registered_events;
+      })
+      .then(registeredEvents => {
+        const events = registeredEvents.map(
+          registeredEvent => getEvent(registeredEvent).then(x => x.data.events[0]));
+        Promise
+          .all(events)
+          .then(result => this.setState({ events: result }));
+      })
+      .catch(err => console.log('Error', err));
+  }
+
+  render() {
+    return (
+      <div className="profile">
+        <ProfileHeader
+          name={this.state.first_name + ' ' + this.state.last_name}
+          hours={this.state.hours}
+        />
+        <NextEvent>
+          {this.state.events.map((event, index) => {
+            return (
+              <ProfileEvent
+                event={event}
+                index={index}
+              />
+            );
+          })}
+        </NextEvent>
+        <EventInfo />
+      </div>
+    );
+  }
+}
 
 Profile.propTypes = {
   children: PropTypes.node,

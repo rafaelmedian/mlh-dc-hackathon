@@ -312,6 +312,7 @@ $color-5: #29cc10;
   border-radius: 5px;
   border: 1px solid #efefef;
   padding: 20px;
+  margin-bottom: 5px;
 }
 
 .profile-event-icon-box {
@@ -331,3 +332,23 @@ $color-5: #29cc10;
   font-size: 16px;
   color: #747e8d;
 }
+
+.profile-event-title {
+  line-height: 21px;
+  font-size: 16px;
+  color: #747e8d;
+}
+
+.profile-event-time {
+  line-height: 15px;
+  font-size: 13px;
+  color: #747e8d;
+}
+
+.profile-event-description {
+  line-height: 18px;
+  font-size: 14px;
+  color: #747e8d;
+  margin-top: 10px;
+}
+

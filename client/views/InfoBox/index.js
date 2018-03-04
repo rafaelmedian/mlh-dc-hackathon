@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faShareAlt, faHeart, } from '@fortawesome/fontawesome-free-solid';
 import { ymdToDate } from '../../utils';
+import { image } from 'faker';
 
 const InfoBox = (props) => {
   const { className, event, toggle, close } = props;
@@ -34,7 +35,7 @@ const InfoBox = (props) => {
         <div>
           <img
             className="img-fluid"
-            src="https://picsum.photos/150/150"
+            src={image[event.type]()}
             alt=""
           />
           <div className="map-header-icons">

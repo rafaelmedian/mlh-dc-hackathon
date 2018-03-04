@@ -29,13 +29,13 @@ class Example extends Component {
 
   next() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+    const nextIndex = this.state.activeIndex === this.props.items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+    const nextIndex = this.state.activeIndex === 0 ? this.props.items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -46,13 +46,7 @@ class Example extends Component {
 
   render() {
     const { activeIndex } = this.state;
-
-    // create 5 images using faker API
-    const items = Array(5)
-      .fill('')
-      .map(item => ({ src: image[this.props.type]() }));
-
-    const slides = items.map((item, index) => {
+    const slides = this.props.items.map((item, index) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
@@ -71,7 +65,7 @@ class Example extends Component {
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

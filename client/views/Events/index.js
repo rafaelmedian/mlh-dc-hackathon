@@ -18,7 +18,7 @@ import Footer from '../Common/Footer'
 
 const linkStyle = {
   color: 'white'
-}
+};
 
 const buttonStyle = {
   marginRight: 10
