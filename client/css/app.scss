@@ -1,4 +1,18 @@
 $color-1: #747e8d;
+$color-2: #ff3a50;
+$color-3: #3b86ff;
+
+.color-1 {
+  color: $color-1;
+}
+
+.color-2 {
+  color: $color-2;
+}
+
+.color-2 {
+  color: $color-3;
+}
 
 @mixin withoutOutline() {
   &:focus {

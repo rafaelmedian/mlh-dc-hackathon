@@ -58,8 +58,8 @@ class MapDrawer extends Component {
               alt=""
             />
             <div className="map-header-icons">
-              <FontAwesomeIcon icon={faShareAlt} />
-              <FontAwesomeIcon icon={faHeart} />
+              <FontAwesomeIcon className="color-3" icon={faShareAlt} />
+              <FontAwesomeIcon className="color-2" icon={faHeart} />
             </div>
           </div>
         </div>
